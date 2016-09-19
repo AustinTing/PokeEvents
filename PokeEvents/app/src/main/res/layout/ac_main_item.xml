@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/battle"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:layout_marginBottom="3dp"
+    android:layout_marginTop="3dp"
+    android:background="@drawable/battleshape"
+    android:paddingBottom="15dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="15dp">
+
+    <ImageView
+        android:id="@+id/userImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/frame"
+        android:src="@drawable/user"
+
+        />
+
+    <Button
+        android:id="@+id/join"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="1dp"
+        android:text="JOIN"
+        android:textSize="10sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@id/join"
+        android:layout_toRightOf="@id/userImage"
+
+
+        >
+
+
+        <TextView
+            android:id="@+id/countdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="START IN 2:30:00"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/place"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/countdown"
+            android:layout_below="@id/countdown"
+            android:layout_marginTop="5dp"
+            android:text="雄工道館"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/participants"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/place"
+            android:layout_alignRight="@id/countdown">
+
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/join" />
+
+            <TextView
+                android:id="@+id/playerAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:gravity="bottom"
+                android:text="1001"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -38,3 +38,5 @@ gradle.properties
 gradlew
 gradlew.bat
 settings.gradle
+
+google-services.json
