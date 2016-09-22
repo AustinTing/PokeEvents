@@ -5,9 +5,10 @@ package com.expixel.pokeevents;
  */
 
 public class User {
-    private String name = "";
-    private String imgUrl = "";
-    private String team = "";
+    public String name = "";
+    public String imgUrl = "";
+    public String team = "";
+
     public User() {
 
     }

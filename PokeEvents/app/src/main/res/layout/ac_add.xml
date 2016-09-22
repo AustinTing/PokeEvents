@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
+
+    <TextView
+        android:id="@+id/postTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="#ec3636"
+        android:padding="5dp"
+        android:text="Start an event"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="35sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/eventTypeTitle"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="STEP 1 . Choose an event type "
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/postTitle"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        />
+    <RadioGroup
+        android:id="@+id/eventTypeRdGrp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/eventTypeTitle"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+
+        <RadioButton
+            android:id="@+id/btnBattle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:checked="false"
+            android:text="BATTLE"
+            android:textColor="#AA880000"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/btnCapture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:clickable="true"
+            android:text="CAPTURE"
+            android:textColor="#AA000088"
+            android:textStyle="bold" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/eventTimeTitle"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="STEP 2. Select date and time"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/eventTypeRdGrp"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        />
+
+    <RelativeLayout
+        android:id="@+id/eventTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/eventTimeTitle"
+        android:layout_centerHorizontal="true">
+
+
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#AA880000"
+            android:hint="date"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:onClick="onDateSettingClick"
+            />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@id/date"
+            android:layout_toRightOf="@id/date"
+
+            android:background="#AA000088"
+            android:hint="time"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:onClick="onTimeSettingClick"
+            />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/eventLocationTitle"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="STEP 3. Input location"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/eventTime"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        />
+
+    <AutoCompleteTextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/eventLocationTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:hint="Central Park"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/location"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/createButton"
+        android:text="GO!"
+        android:textColor="#282424"
+        android:textSize="25dp"
+        android:padding="15dp"
+        android:layout_marginBottom="50dp"
+        android:onClick="onAddClick"
+        />
+
+
+
+</RelativeLayout>

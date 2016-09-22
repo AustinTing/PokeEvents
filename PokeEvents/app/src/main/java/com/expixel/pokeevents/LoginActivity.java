@@ -26,6 +26,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by cellbody on 2016/9/9.
@@ -33,7 +34,7 @@ import com.google.firebase.database.DatabaseReference;
 
 public class LoginActivity extends BaseActivity{
 
-    private DatabaseReference databaseReference;
+    private DatabaseReference dbRef;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private GoogleApiClient mGoogleApiClient;
@@ -43,7 +44,8 @@ public class LoginActivity extends BaseActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ac_welcome);
-
+        loginConfig();
+        dbRef = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -53,7 +55,6 @@ public class LoginActivity extends BaseActivity{
                     nextActivity();
                     Log.d(TAG, "LoginActivity: onAuthStateChanged: signed_IN: " + user.getUid());
                 } else {
-                    loginConfig();
                     Log.d(TAG, "LoginActivity: onAuthStateChanged: signed_OUT " + firebaseAuth.toString());
                 }
             }
@@ -76,7 +77,7 @@ public class LoginActivity extends BaseActivity{
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
-
+//
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, new GoogleApiClient.OnConnectionFailedListener() {
                     @Override
@@ -168,20 +169,8 @@ public class LoginActivity extends BaseActivity{
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if (result.isSuccess()) {
-                // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
-                String personName = account.getDisplayName();
-                String personEmail = account.getEmail();
-                String personId = account.getId();
-                Uri personPhoto = account.getPhotoUrl();
-
                 firebaseAuthWithGoogle(account);
-
-                Log.d(TAG, "ProviderGoogle: onActivityResult: \n" +
-                        "name: " + personName + "\n" +
-                        "email: " + personEmail + "\n" +
-                        "pesonId: " + personId + "\n" +
-                        "personPhoto: " + personPhoto);
             } else {
                 // Google Sign In failed, update UI appropriately
 
@@ -192,6 +181,7 @@ public class LoginActivity extends BaseActivity{
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
 
         showProgressDialog("loadinggggg");
@@ -213,7 +203,7 @@ public class LoginActivity extends BaseActivity{
                                     "pesonId: " + mAuth.getCurrentUser().getUid() + "\n" +
                                     "personPhoto: " + mAuth.getCurrentUser().getPhotoUrl().toString());
 
-                            databaseReference.child("users").child(uid).setValue(user);
+                            dbRef.child("users").child(uid).setValue(user);
                             LoginActivity.this.nextActivity();
                             LoginActivity.this.finish();
                         } else {
